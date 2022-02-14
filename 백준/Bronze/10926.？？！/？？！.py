@@ -1,0 +1,3 @@
+im = input()
+
+print(im + '??!')
