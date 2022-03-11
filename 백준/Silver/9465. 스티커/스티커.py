@@ -4,7 +4,7 @@ input = sys.stdin.readline
 t = int(input())
 for _ in range(t):
     n = int(input())
-    arr = [[x for x in map(int, input().split())] for _ in range(2)]
+    arr = [list(map(int, input().split())) for _ in range(2)]
     if n==1:
         print(max(arr[0][0], arr[1][0]))
     else:
