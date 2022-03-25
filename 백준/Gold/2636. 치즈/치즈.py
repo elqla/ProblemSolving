@@ -10,29 +10,29 @@ arr = [list(map(int, input().split())) for _ in range(n)]
 
 
 def bfs():
-    air = deque()
+    air = set()
     visited = [[False]*m for _ in range(n)]
 #    모서리 좌표 넣기
     for i in range(n):
         for j in range(m):
              if not visited[i][j]:
                 if i == 0 or i == n-1:
-                    air.append((i, j))
+                    air.add((i, j))
                     visited[i][j] = True
                 if j == 0 or j == m-1:
-                    air.append((i, j))
+                    air.add((i, j))
                     visited[i][j] = True
-                    
+
     # air의 좌표가 남아있을때까지 while문 돌기
     cnt = 0
     while air:
-        x, y = air.popleft()
+        x, y = air.pop()
         for dx, dy in [[0, 1], [0, -1], [1, 0], [-1, 0]]:
                 nx, ny = x+dx, y+dy
                 if 0<=nx<n and 0<=ny<m:
                     if arr[nx][ny] == 0 and visited[nx][ny]==False:
                         visited[nx][ny] = True
-                        air.append((nx, ny))
+                        air.add((nx, ny))
                     elif arr[nx][ny]==1:
                         arr[nx][ny] = 0
                         cnt += 1
@@ -51,4 +51,5 @@ while 1:
         break
     time += 1
 print(time)
+#print(res)
 print(res[-2])
