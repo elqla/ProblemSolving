@@ -15,7 +15,6 @@ def bfs():
 #    모서리 좌표 넣기
     for i in range(n):
         for j in range(m):
-             if not visited[i][j]:
                 if i == 0 or i == n-1:
                     air.add((i, j))
                     visited[i][j] = True
