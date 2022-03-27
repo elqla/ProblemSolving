@@ -1,3 +1,4 @@
+from collections import deque
 n, k = map(int, input().split())
 arr = [list(map(int, input().split())) for _ in range(n)]
 s, x, y = map(int, input().split())
@@ -10,9 +11,9 @@ for i in range(n):
         if arr[i][j] !=0:
             dq.append((arr[i][j],i, j, 0))
 dq.sort()
-dq = dq
+dq = deque(dq)
 while dq:
-    sort, i, j, time = dq.pop(0)
+    sort, i, j, time = dq.popleft()
     if time == s:
         break
     else:
