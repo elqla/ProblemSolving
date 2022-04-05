@@ -8,7 +8,7 @@ public class Main {
 		
 		N = sc.nextInt();
 		M = sc.nextInt();
-		arr = new int[300][300];
+		arr = new int[N+1][M+1];
 		for (int a=0; a<N; a++) {
 			for (int b=0; b<M; b++) {
 				int num = sc.nextInt();
