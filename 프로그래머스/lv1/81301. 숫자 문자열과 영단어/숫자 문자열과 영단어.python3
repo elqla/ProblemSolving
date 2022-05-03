@@ -1,0 +1,18 @@
+dic = ['zero','one','two','three','four','five','six','seven','eight','nine']
+def solution(s):
+    answer = ''
+    lst = list(s)
+    tmp = ''
+    for l in lst:
+        if l.isdigit():
+            answer += l
+        else:
+            tmp += l
+            if tmp in dic:
+                a = dic.index(tmp)
+                answer += str(a)
+                tmp = ''
+
+
+
+    return int(answer)
