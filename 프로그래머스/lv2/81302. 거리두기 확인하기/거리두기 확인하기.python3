@@ -1,0 +1,37 @@
+di1 = [1, -1, 0, 0]
+dj1 = [0, 0, 1, -1]
+
+di2 = [1, 1, -1, -1]
+dj2 = [-1, 1, -1, 1]
+def chk(arr):
+    for i in range(5):
+        for j in range(5):
+            if arr[i][j] != 'P': continue
+
+            # 상하좌우로 거리가 1인 응시자 확인
+            for d in range(4):
+                ni, nj = i + di1[d], j + dj1[d]
+                if 0<=ni<5 and 0<=nj<5 and arr[ni][nj] =='P':
+                    return 0
+
+            # 대각선에 위치한 응시자 확인
+            for d in range(4):
+                ni, nj = i + di2[d], j + dj2[d]
+                if 0<=ni<5 and 0<=nj<5 and arr[ni][nj] =='P':
+                    if arr[i][nj] !='X' or arr[ni][j] !='X':
+                        return 0
+
+            # 상하좌우로 거리가 2인 응시자 확인
+            for d in range(4):
+                ni, nj = i + di1[d]*2, j + dj1[d]*2
+                # 거리가 2인 곳에 응시자가 있다면 파티션이 존재하는지
+                if 0<=ni<5 and 0<=nj<5 and arr[ni][nj] =='P':
+                    if arr[i+di1[d]][j+dj1[d]] != 'X':
+                        return 0
+
+    return 1
+
+
+
+def solution(places):
+    return [chk(place) for place in places]
